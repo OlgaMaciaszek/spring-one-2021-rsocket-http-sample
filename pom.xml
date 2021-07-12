@@ -17,6 +17,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<!--<spring-cloud.version>Hoxton.BUILD-SNAPSHOT</spring-cloud.version>-->
+		<rsocket-routing.broker.version>0.3.0-SNAPSHOT</rsocket-routing.broker.version>
 		<rsocket-routing.version>0.2.0-SNAPSHOT</rsocket-routing.version>
 	</properties>
 
@@ -43,12 +44,17 @@
 			<dependency>
 				<groupId>io.rsocket.routing</groupId>
 				<artifactId>rsocket-routing-broker-spring</artifactId>
-				<version>${rsocket-routing.version}</version>
+				<version>${rsocket-routing.broker.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>io.rsocket.routing</groupId>
 				<artifactId>rsocket-routing-frames</artifactId>
 				<version>${rsocket-routing.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.rsocket.routing</groupId>
+				<artifactId>rsocket-routing-http-bridge</artifactId>
+				<version>${rsocket-routing.broker.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

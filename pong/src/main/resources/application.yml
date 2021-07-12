@@ -10,7 +10,7 @@ io.rsocket.routing.client:
 
 logging:
   level:
-    io.rsocket.routing.client: INFO
+    io.rsocket.routing.client: DEBUG
 ---
 spring.config.activate.on-profile: server
 pong:

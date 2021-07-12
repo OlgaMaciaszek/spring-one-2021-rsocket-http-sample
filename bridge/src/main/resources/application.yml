@@ -1,0 +1,15 @@
+server:
+  port: 9080
+
+
+io.rsocket.routing.client:
+  route-id: 00000000-0000-0000-0000-000000000001
+  service-name: bridge
+
+  brokers:
+    - tcp:
+        host: localhost
+        port: 8002
+logging:
+  level:
+    io.rsocket.routing: debug
