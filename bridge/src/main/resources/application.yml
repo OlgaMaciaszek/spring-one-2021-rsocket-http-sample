@@ -12,4 +12,16 @@ io.rsocket.routing.client:
         port: 8002
 logging:
   level:
-    io.rsocket.routing: debug
+    io.rsocket.routing: trace
+
+#io:
+#  rsocket:
+#    routing:
+#      http:
+#        bridge:
+#          request-response-default: false
+
+#spring:
+#  cloud:
+#    function:
+#      definition: ff
