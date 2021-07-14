@@ -22,8 +22,6 @@
 	</properties>
 
 	<modules>
-		<module>ping</module>
-		<module>pong</module>
 		<module>broker</module>
 		<module>service</module>
 	</modules>
