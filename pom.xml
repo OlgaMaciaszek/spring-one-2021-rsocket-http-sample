@@ -24,6 +24,7 @@
 	<modules>
 		<module>broker</module>
 		<module>service</module>
+		<module>bridge</module>
 	</modules>
 
 	<dependencyManagement>
