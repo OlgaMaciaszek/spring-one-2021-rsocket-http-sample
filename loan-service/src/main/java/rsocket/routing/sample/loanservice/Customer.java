@@ -12,10 +12,13 @@ import org.springframework.core.style.ToStringCreator;
  */
 class Customer {
 
-	private final UUID uuid;
-	private final LocalDate dateOfBirth;
+	private UUID uuid;
+	private LocalDate dateOfBirth;
 	private String name;
 	private String surname;
+
+	Customer() {
+	}
 
 	Customer(UUID uuid, LocalDate dateOfBirth, String name, String surname) {
 		this.uuid = uuid;
@@ -30,6 +33,14 @@ class Customer {
 
 	void setSurname(String surname) {
 		this.surname = surname;
+	}
+
+	void setUuid(UUID uuid) {
+		this.uuid = uuid;
+	}
+
+	void setDateOfBirth(LocalDate dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	int getAge() {
@@ -60,10 +71,11 @@ class Customer {
 
 	@Override
 	public String toString() {
-		ToStringCreator creator = new ToStringCreator(this);
-		creator.append("uuid", uuid);
-		creator.append("name", name);
-		creator.append("surname", surname);
-		return creator.toString();
+		return "{" +
+				"\"uuid\":\"" + uuid +
+				"\", \"dateOfBirth\":\"" + dateOfBirth +
+				"\", \"name\":\"" + name + '\"' +
+				", \"surname\":\"" + surname + '\"' +
+				'}';
 	}
 }

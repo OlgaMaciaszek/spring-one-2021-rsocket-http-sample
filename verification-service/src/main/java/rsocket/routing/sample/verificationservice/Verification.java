@@ -10,8 +10,11 @@ import org.springframework.core.style.ToStringCreator;
  */
 class Verification {
 
-	private final UUID customerUuid;
-	private final VerificationResult verificationResult;
+	private UUID customerUuid;
+	private VerificationResult verificationResult;
+
+	Verification() {
+	}
 
 	Verification(UUID customerUuid, VerificationResult verificationResult) {
 		this.customerUuid = customerUuid;
@@ -28,6 +31,14 @@ class Verification {
 
 	VerificationResult getVerificationResult() {
 		return verificationResult;
+	}
+
+	void setCustomerUuid(UUID customerUuid) {
+		this.customerUuid = customerUuid;
+	}
+
+	void setVerificationResult(VerificationResult verificationResult) {
+		this.verificationResult = verificationResult;
 	}
 
 	@Override

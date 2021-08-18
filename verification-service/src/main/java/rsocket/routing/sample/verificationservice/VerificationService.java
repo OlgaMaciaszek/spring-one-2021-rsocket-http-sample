@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 public class VerificationService {
 
 	Verification verify(Customer customer) {
+		if (customer == null) {
+			throw new IllegalArgumentException("Customer cannot be null");
+		}
 		if (customer.getAge() >= 18) {
 			return Verification.valid(customer.getUuid());
 		}
