@@ -13,15 +13,3 @@ io.rsocket.routing.client:
 logging:
   level:
     io.rsocket.routing: trace
-
-#io:
-#  rsocket:
-#    routing:
-#      http:
-#        bridge:
-#          request-response-default: false
-
-#spring:
-#  cloud:
-#    function:
-#      definition: ff

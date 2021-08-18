@@ -1,4 +1,4 @@
-package rsocket.routing.sample.service;
+package rsocket.routing.sample.loanservice;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ServiceApplicationTests {
+public class LoanServiceApplicationTests {
 
 	@Ignore
 	@Test

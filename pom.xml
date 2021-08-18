@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>rsocket.routing.sample</groupId>
-	<artifactId>rsocket-routing-sample</artifactId>
+	<artifactId>rsocket-routing-with-http-sample</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>rsocket-routing-sample</name>
@@ -23,8 +23,9 @@
 
 	<modules>
 		<module>broker</module>
-		<module>service</module>
+		<module>loan-service</module>
 		<module>bridge</module>
+		<module>verification-service</module>
 	</modules>
 
 	<dependencyManagement>

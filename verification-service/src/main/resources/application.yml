@@ -1,0 +1,24 @@
+io.rsocket.routing.client:
+  route-id: 00000000-0000-0000-0000-000000000003
+  service-name: verification-service
+  tags:
+    INSTANCE_NAME: verification-service-1
+  brokers:
+    - tcp:
+        host: localhost
+        port: 8002
+
+logging:
+  level:
+    io.rsocket.routing.client: DEBUG
+
+---
+spring:
+  config:
+    activate:
+      on-profile: verification2
+
+io.rsocket.routing.client:
+  route-id: 2
+  tags:
+    INSTANCE_NAME: verfication-service-2
