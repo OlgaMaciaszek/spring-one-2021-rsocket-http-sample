@@ -1,22 +1,46 @@
-# Spring Cloud Broker RSocket Http Bridge Sample
+# SpringOne 2021 Spring Cloud RSocket Broker and RSocket Http Bridge Sample
 
-## Test RSocket Http Bridge Sample
+The sample contains:
 
-- Run `BrokerApplication`, `BridgeApplication` and `ServiceApplication`.
+- **Verification Service** that classifies the customers as `valid` or `fraud`. This is a
+  new service that uses RSocket for communication. You can use profiles to run multiple
+  instances of this service.
+- **RSocket Broker** that the VerificationService registers with. The broker, built on top
+  of `io.rsocket.routing:rsocket-routing-broker-spring` allows for keeping track of and
+  selecting appropriate RSocket service using load-balancing and selection criteria passed
+  to it.
+- **Loan Service** that is a legacy service for requesting loans that uses HTTP for
+  communication, but needs to communicate with the VerificationService that only speaks
+  RSocket to validate its customers.
+- **RSocket HTTP Bridge** that receives HTTP requests from the Loan Service and passes
+  them on via RSocket to Verification Service and then passes the responses back to the
+  Loan Service. It's built on top of `io.rsocket.routing:rsocket-routing-http-bridge`
 
-Use the Bridge to communicate with the RSocket-based `ServiceApplication`, through RSocket
-Broker, using an HTTP client.
+## Test the sample
 
-Try the following commands to test the 4 RSocket Interaction modes (`rr`
-- `request - response`, `rs` - `request - stream`, `rc` - `request - channel`, `ff`
-- `fire and forget`):
+- Run `BrokerApplication`, `BridgeApplication`, `VerificationServiceApplication`
+  and `LoanServiceApplication`.
 
-- `http POST localhost:9080/rr/service/service-rr body=test`
-- `http POST localhost:9080/rs/service/service-rs body=test`
-- `http POST localhost:9080/rc/service/service-rc body=test`
-- `http POST localhost:9080/ff/service/service-ff body=test`
+- Use provided JSON files (`valid.json` and `fraud.json`) to see the customers verified
+  with the HTTP and RSocket requests passing through Loan Service -> RSocket HTTP Bridge
+  -> RSocket Broker -> Verification Service and back.
 
-Use the following command to test the default function resolution (`request-response`
-unless otherwise specified in `spring.cloud.function.definition`):
+`http POST localhost:9080/verification-service/verify < valid.json`
+`http POST localhost:9080/verification-service/verify < fraud.json`
 
-- `http POST localhost:9080/service/service-ff body=test`
+## Test using tags for Verification Service instance selection
+
+Try running the request specifying an `INSTANCE_NAME` tag of an instance that is not
+present:
+
+`http POST localhost:9080/verification-service/verify < valid.json 'X-RSocket-Tags:INSTANCE_NAME=verification-service-2'
+`
+
+It will return a `500`.
+
+Run an instance that meets the tag criteria:
+`cd verification-service`
+`../mvnw spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=verification2"`
+
+Rerun the HTTP request again - you should receive a correct response.
+

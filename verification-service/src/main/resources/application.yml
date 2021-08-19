@@ -19,6 +19,17 @@ spring:
       on-profile: verification2
 
 io.rsocket.routing.client:
-  route-id: 2
+  route-id: 00000000-0000-0000-0000-000000000002
   tags:
-    INSTANCE_NAME: verfication-service-2
+    INSTANCE_NAME: verification-service-2
+
+---
+spring:
+  config:
+    activate:
+      on-profile: verification3
+
+io.rsocket.routing.client:
+  route-id: 00000000-0000-0000-0000-000000000008
+  tags:
+    INSTANCE_NAME: verification-service-3
