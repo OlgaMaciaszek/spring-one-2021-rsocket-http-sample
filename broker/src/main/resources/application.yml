@@ -5,7 +5,6 @@ io.rsocket.routing.broker:
 
 logging:
   level:
-#    io.rsocket.routing.broker: DEBUG
     io.rsocket.routing.broker: TRACE
 ---
 spring.config.activate.on-profile: broker2

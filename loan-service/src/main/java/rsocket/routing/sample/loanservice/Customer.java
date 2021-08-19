@@ -5,8 +5,6 @@ import java.time.Period;
 import java.util.Objects;
 import java.util.UUID;
 
-import org.springframework.core.style.ToStringCreator;
-
 /**
  * @author Olga Maciaszek-Sharma
  */
