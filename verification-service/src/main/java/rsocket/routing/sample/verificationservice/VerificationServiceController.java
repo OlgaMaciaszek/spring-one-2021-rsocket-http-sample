@@ -23,7 +23,7 @@ public class VerificationServiceController {
 	}
 
 	@MessageMapping("verify")
-	public Mono<Verification> verify(byte[] customerBytes) {
+	public Mono<byte[]> verify(byte[] customerBytes) {
 		String customerJSON = new String(customerBytes, StandardCharsets.UTF_8);
 		Customer customer = null;
 		try {
@@ -35,7 +35,7 @@ public class VerificationServiceController {
 		Verification verification = verificationService.verify(customer);
 		log.info("Verification result for {}: {}", customer, verification
 				.getVerificationResult());
-		return Mono.just(verification);
+		return Mono.just(verification.toString().getBytes(StandardCharsets.UTF_8));
 	}
 
 }

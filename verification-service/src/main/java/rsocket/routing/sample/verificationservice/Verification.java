@@ -3,8 +3,6 @@ package rsocket.routing.sample.verificationservice;
 import java.util.Objects;
 import java.util.UUID;
 
-import org.springframework.core.style.ToStringCreator;
-
 /**
  * @author Olga Maciaszek-Sharma
  */
@@ -43,10 +41,10 @@ class Verification {
 
 	@Override
 	public String toString() {
-		ToStringCreator creator = new ToStringCreator(this);
-		creator.append("customerUuid", customerUuid);
-		creator.append("verificationResult", verificationResult);
-		return creator.toString();
+		return "{" +
+				"\"customerUuid\":\"" + customerUuid +
+				"\", \"verificationResult\":\"" + verificationResult +
+				"\"}";
 	}
 
 	@Override
