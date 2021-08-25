@@ -20,12 +20,12 @@ public class VerificationServiceClient {
 		this.webClient = webClient;
 	}
 
-	Mono<Verification> verify(Customer customer) {
+	Mono<byte[]> verify(Customer customer) {
 		return webClient.post()
 				.uri(URI.create("http://localhost:9080/verification-service/verify"))
 				.body(Mono.just(customer.toString()
 						.getBytes(StandardCharsets.UTF_8)), byte[].class)
 				.retrieve()
-				.bodyToMono(Verification.class);
+				.bodyToMono(byte[].class);
 	}
 }

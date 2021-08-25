@@ -24,6 +24,13 @@ The sample contains:
 - Use provided JSON files (`valid.json` and `fraud.json`) to see the customers verified
   with the HTTP and RSocket requests passing through Loan Service -> RSocket HTTP Bridge
   -> RSocket Broker -> Verification Service and back.
+  
+`http POST localhost:9180/verify < valid.json`
+`http POST localhost:9180/verify < fraud.json`
+
+## Test interacting directly with the bridge
+
+You can also check interacting directly with the bridge:
 
 `http POST localhost:9080/verification-service/verify < valid.json`
 `http POST localhost:9080/verification-service/verify < fraud.json`
