@@ -1,0 +1,25 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: bridge
+          uri: "http://localhost:9081"
+          predicates:
+            - Path=/verification-service/**
+  application:
+    name: gateway
+server:
+  port: 9081
+
+io.rsocket.routing.client:
+  route-id: 00000000-0000-0000-0000-00000000007
+  service-name: gateway
+
+  brokers:
+    - tcp:
+        host: localhost
+        port: 8002
+logging:
+  level:
+    org.springframework.cloud: debug
+    io.rsocket.routing: trace

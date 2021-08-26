@@ -28,6 +28,7 @@
 		<module>loan-service</module>
 		<module>bridge</module>
 		<module>verification-service</module>
+		<module>gateway</module>
 	</modules>
 
 	<dependencyManagement>

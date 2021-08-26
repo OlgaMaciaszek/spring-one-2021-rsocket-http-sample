@@ -6,6 +6,8 @@ spring:
           instances:
             bridge:
             - uri: "http://localhost:9080"
+            gateway:
+            - uri: "http://localhost:9081"
   application:
     name: loan-service
 
