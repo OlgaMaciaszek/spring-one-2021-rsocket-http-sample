@@ -37,7 +37,9 @@ You can also check interacting directly with the bridge:
 
 ## Test using tags for Verification Service instance selection
 
-Try running the request specifying an `INSTANCE_NAME` tag of an instance that is not
+RSocket HTTP Bridge allows you to set RSocket Routing tags via headers.
+
+Try running the request directly against the bridge specifying an `INSTANCE_NAME` tag of an instance that is not
 present:
 
 `http POST localhost:9080/verification-service/verify < valid.json 'X-RSocket-Tags:INSTANCE_NAME=verification-service-2'
@@ -51,3 +53,4 @@ Run an instance that meets the tag criteria:
 
 Rerun the HTTP request again - you should receive a correct response.
 
+The LoanService app will set the same tag via headers if you run it with `verification2` profile.

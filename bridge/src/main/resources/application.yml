@@ -1,3 +1,7 @@
+spring:
+  application:
+    name: bridge
+
 server:
   port: 9080
 

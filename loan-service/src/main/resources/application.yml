@@ -1,2 +1,25 @@
+spring:
+  cloud:
+    discovery:
+      client:
+        simple:
+          instances:
+            bridge:
+            - uri: "http://localhost:9080"
+  application:
+    name: loan-service
+
 server:
   port: 9180
+
+---
+spring:
+  config:
+    activate:
+      on-profile: verification2
+
+rsocket:
+  routing:
+    sample:
+      loanservice:
+        instance: verification-service-2
