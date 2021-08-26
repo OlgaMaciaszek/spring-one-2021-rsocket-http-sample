@@ -16,4 +16,5 @@ io.rsocket.routing.client:
         port: 8002
 logging:
   level:
+    org.springframework.cloud: debug
     io.rsocket.routing: trace

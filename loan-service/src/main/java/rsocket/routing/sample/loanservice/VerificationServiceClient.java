@@ -1,5 +1,6 @@
 package rsocket.routing.sample.loanservice;
 
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -33,14 +34,14 @@ public class VerificationServiceClient {
 		if (instances.size() < 1) {
 			throw new IllegalArgumentException("No bridge instance found");
 		}
-		return buildRequest(customer, instances)
+		return buildRequest(customer, instances.get(0).getUri())
 				.retrieve()
 				.bodyToMono(byte[].class);
 	}
 
-	private WebClient.RequestHeadersSpec<?> buildRequest(Customer customer, List<ServiceInstance> instances) {
+	private WebClient.RequestHeadersSpec<?> buildRequest(Customer customer, URI instanceUri) {
 		WebClient.RequestHeadersSpec request = webClient.post()
-				.uri(UriComponentsBuilder.fromUri(instances.get(0).getUri())
+				.uri(UriComponentsBuilder.fromUri(instanceUri)
 						.path("verification-service/verify")
 						.build().toUri())
 				.body(Mono.just(customer.toString()
