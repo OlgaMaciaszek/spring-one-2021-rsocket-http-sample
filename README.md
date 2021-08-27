@@ -12,13 +12,15 @@ The sample contains:
 - **Loan Service** that is a legacy service for requesting loans that uses HTTP for
   communication, but needs to communicate with the VerificationService that only speaks
   RSocket to validate its customers.
-- **RSocket HTTP Bridge** that receives HTTP requests from the Loan Service and passes
+- **Gateway** is a Spring Cloud Gateway instance that also has contains
+  the `io.rsocket.routing:rsocket-routing-http-bridge` dependency within, which makes it a
+  RSocket Http Bridge instance. It receives HTTP requests from the Loan Service and passes
   them on via RSocket to Verification Service and then passes the responses back to the
-  Loan Service. It's built on top of `io.rsocket.routing:rsocket-routing-http-bridge`
+  Loan Service.
 
 ## Test the sample
 
-- Run `BrokerApplication`, `BridgeApplication`, `VerificationServiceApplication`
+- Run `BrokerApplication`, `GatewayApplication`, `VerificationServiceApplication`
   and `LoanServiceApplication`.
 
 - Use provided JSON files (`valid.json` and `fraud.json`) to see the customers verified
@@ -30,19 +32,19 @@ The sample contains:
 
 ## Test interacting directly with the bridge
 
-You can also check interacting directly with the bridge:
+You can also check interacting directly with gateway/bridge:
 
-`http POST localhost:9080/verification-service/verify < valid.json`
-`http POST localhost:9080/verification-service/verify < fraud.json`
+`http POST localhost:9081/verify < valid.json`
+`http POST localhost:9081/verify < fraud.json`
 
 ## Test using tags for Verification Service instance selection
 
 RSocket HTTP Bridge allows you to set RSocket Routing tags via headers.
 
-Try running the request directly against the bridge specifying an `INSTANCE_NAME` tag of an instance that is not
+Try running the request directly against the gateway/ bridge specifying an `INSTANCE_NAME` tag of an instance that is not
 present:
 
-`http POST localhost:9080/verification-service/verify < valid.json 'X-RSocket-Tags:INSTANCE_NAME=verification-service-2'
+`http POST localhost:9081/verify < valid.json 'X-RSocket-Tags:INSTANCE_NAME=verification-service-2'
 `
 
 It will return a `500`.

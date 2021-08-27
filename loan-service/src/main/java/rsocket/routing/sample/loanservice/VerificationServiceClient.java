@@ -30,9 +30,9 @@ public class VerificationServiceClient {
 	}
 
 	Mono<byte[]> verify(Customer customer) {
-		List<ServiceInstance> instances = discoveryClient.getInstances("bridge");
+		List<ServiceInstance> instances = discoveryClient.getInstances("gateway");
 		if (instances.size() < 1) {
-			throw new IllegalArgumentException("No bridge instance found");
+			throw new IllegalArgumentException("No gateway instance found");
 		}
 		return buildRequest(customer, instances.get(0).getUri())
 				.retrieve()
@@ -42,7 +42,7 @@ public class VerificationServiceClient {
 	private WebClient.RequestHeadersSpec<?> buildRequest(Customer customer, URI instanceUri) {
 		WebClient.RequestHeadersSpec request = webClient.post()
 				.uri(UriComponentsBuilder.fromUri(instanceUri)
-						.path("verification-service/verify")
+						.path("verify")
 						.build().toUri())
 				.body(Mono.just(customer.toString()
 						.getBytes(StandardCharsets.UTF_8)), byte[].class);

@@ -1,13 +1,15 @@
-package rsocket.routing.sample.bridge.bridge;
+package rsocket.routing.sample.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author Olga Maciaszek-Sharma
+ */
 @SpringBootApplication
-public class BridgeApplication {
+public class GatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BridgeApplication.class, args);
+		SpringApplication.run(GatewayApplication.class, args);
 	}
-
 }
