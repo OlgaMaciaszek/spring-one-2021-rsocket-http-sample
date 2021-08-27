@@ -3,9 +3,9 @@ spring:
     gateway:
       routes:
         - id: bridge
-          uri: "http://localhost:9081"
+          uri: forward:/verification-service/verify
           predicates:
-            - Path=/verification-service/**
+            - Path=/verify
   application:
     name: gateway
 server:

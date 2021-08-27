@@ -4,8 +4,6 @@ spring:
       client:
         simple:
           instances:
-            bridge:
-            - uri: "http://localhost:9080"
             gateway:
             - uri: "http://localhost:9081"
   application:

@@ -23,6 +23,7 @@ public class VerificationServiceController {
 		this.verificationService = verificationService;
 	}
 
+	// Planned: use Customer instead of byte[]
 	@MessageMapping("verify")
 	public Mono<byte[]> verify(byte[] customerBytes) {
 		Customer customer = parseCustomer(customerBytes);
