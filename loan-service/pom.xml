@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>rsocket.routing.sample</groupId>
-		<artifactId>rsocket-routing-sample</artifactId>
+		<artifactId>rsocket-routing-with-http-sample</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>

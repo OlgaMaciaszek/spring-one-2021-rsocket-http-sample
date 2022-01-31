@@ -6,7 +6,7 @@ The sample contains:
   new service that uses RSocket for communication. You can use profiles to run multiple
   instances of this service.
 - **RSocket Broker** that the VerificationService registers with. The broker, built on top
-  of `io.rsocket.routing:rsocket-routing-broker-spring` allows for keeping track of and
+  of `io.rsocket.routing:rsocket-broker-spring` allows for keeping track of and
   selecting appropriate RSocket service using load-balancing and selection criteria passed
   to it.
 - **Loan Service** that is a legacy service for requesting loans that uses HTTP for

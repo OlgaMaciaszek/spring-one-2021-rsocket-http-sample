@@ -11,7 +11,7 @@ spring:
 server:
   port: 9081
 
-io.rsocket.routing.client:
+io.rsocket.broker.client:
   route-id: 00000000-0000-0000-0000-00000000007
   service-name: gateway
 
