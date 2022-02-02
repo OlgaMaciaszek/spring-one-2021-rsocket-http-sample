@@ -6,14 +6,14 @@ The sample contains:
   new service that uses RSocket for communication. You can use profiles to run multiple
   instances of this service.
 - **RSocket Broker** that the VerificationService registers with. The broker, built on top
-  of `io.rsocket.routing:rsocket-broker-spring` allows for keeping track of and
+  of `io.rsocket.broker:rsocket-broker-spring` allows for keeping track of and
   selecting appropriate RSocket service using load-balancing and selection criteria passed
   to it.
 - **Loan Service** that is a legacy service for requesting loans that uses HTTP for
   communication, but needs to communicate with the VerificationService that only speaks
   RSocket to validate its customers.
 - **Gateway** is a Spring Cloud Gateway instance that also has contains
-  the `io.rsocket.routing:rsocket-routing-http-bridge` dependency within, which makes it a
+  the `io.rsocket.broker:rsocket-broker-http-bridge` dependency within, which makes it a
   RSocket Http Bridge instance. It receives HTTP requests from the Loan Service and passes
   them on via RSocket to Verification Service and then passes the responses back to the
   Loan Service.

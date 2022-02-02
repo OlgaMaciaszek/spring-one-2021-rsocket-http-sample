@@ -14,12 +14,10 @@ server:
 io.rsocket.broker.client:
   route-id: 00000000-0000-0000-0000-00000000007
   service-name: gateway
-
   brokers:
-    - tcp:
-        host: localhost
-        port: 8002
+    - tcp://localhost:8002
+
 logging:
   level:
     org.springframework.cloud: debug
-    io.rsocket.routing: trace
+    io.rsocket.broker: trace

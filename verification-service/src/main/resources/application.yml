@@ -4,9 +4,7 @@ io.rsocket.broker.client:
   tags:
     INSTANCE_NAME: verification-service-1
   brokers:
-    - tcp:
-        host: localhost
-        port: 8002
+    - tcp://localhost:8002
 
 logging:
   level:
