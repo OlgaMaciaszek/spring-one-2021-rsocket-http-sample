@@ -144,7 +144,7 @@
 		</repository>
 		<repository>
 			<id>github</id>
-			<url>https://maven.pkg.github.com</url>
+			<url>https://maven.pkg.github.com/rsocket-broker/rsocket-broker</url>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
