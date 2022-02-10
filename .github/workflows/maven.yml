@@ -40,9 +40,7 @@ jobs:
       - name: maven-settings-xml-action
         uses: whelk-io/maven-settings-xml-action@v20
         with:
-          servers: '[{ "id": "github", "username": "${env.GITHUB_ACTOR}", "password": "${env.GITHUB_TOKEN}" }]'
+          servers: '[{ "id": "github", "username": "${env.GITHUB_ACTOR}", "password": "${{secrets.GITHUB_TOKEN}}" }]'
           output_file: .m2/settings.xml
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Build with Maven
         run: ./mvnw clean install -B -U
